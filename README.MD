@@ -281,9 +281,9 @@ Type `yes` when prompted to confirm the destruction.
 
 For questions, issues, or contributions, please contact:
 
-- **Name**: Your Name
-- **Email**: your.email@example.com
-- **GitHub**: [your_username](https://github.com/your_username)
+- **Name**: Simon Aguilera
+- **Email**: thesimonaguilera@gmail.com
+- **GitHub**: [nomad3](https://github.com/nomad3)
 
 ---
 
