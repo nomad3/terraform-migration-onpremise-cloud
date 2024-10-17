@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  oracle_db:
+    build: ./oracle
+    ports:
+      - "1521:1521"
+      - "8080:8080"
+    environment:
+      - ORACLE_PASSWORD=YourSecurePassword123!
+    volumes:
+      - ./oracle_data:/opt/oracle/oradata
+
+  sql_server_db:
+    build: ./mssql
+    ports:
+      - "1433:1433"
+    environment:
+      - SA_PASSWORD=YourStrong!Passw0rd
+      - ACCEPT_EULA=Y
+    volumes:
+      - ./mssql_data:/var/opt/mssql
+
+  hadoop_namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
+    container_name: namenode
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+    environment:
+      - CLUSTER_NAME=test
+
+  hadoop_datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    container_name: datanode
+    environment:
+      - CLUSTER_NAME=test
+    links:
+      - hadoop_namenode:namenode
